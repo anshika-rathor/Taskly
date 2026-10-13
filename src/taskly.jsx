@@ -70,9 +70,10 @@ function Notes(){
         ));
     }
 
-    const done = list.filter((yes)=>yes.done);
+    const validTasks = list.filter((t)=> proj.some((p)=> p.id === t.projectId));
+    const done = validTasks.filter((yes)=>yes.done);
     const count = done.length;
-    const total = list.length;
+    const total = validTasks.length;
     const left = total - count;
 
     return(
